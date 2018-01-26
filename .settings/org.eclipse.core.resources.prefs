@@ -1,0 +1,17 @@
+eclipse.preferences.version=1
+encoding/auto_search.py=utf-8
+encoding/config.py=utf-8
+encoding/img_compress_helper.py=utf-8
+encoding/img_d.py=utf-8
+encoding/jieba_helper.py=utf-8
+encoding/jieba_test.py=utf-8
+encoding/ocr_helper.py=utf-8
+encoding/question_helper.py=utf-8
+encoding/recommend_helper.py=utf-8
+encoding/screen_shot_helper.py=utf-8
+encoding/selenium_helper.py=utf-8
+encoding/test.py=utf-8
+encoding/test_ocr.py=utf-8
+encoding/test_parse.py=utf-8
+encoding/test_url.py=utf-8
+encoding/url_helper.py=utf-8
