@@ -1,6 +1,6 @@
 #encoding=utf-8
 baidu_ocr = {
-    'app_id':'10684752',
+    'app_id':'',#这里写app_id
     'app_key':'KbitiVi5pyGBebM0Ujcm3zRl',
     'app_secret':'js72wMVICk6sNW1LDubxsoGpVF7yoLa6'
     }
