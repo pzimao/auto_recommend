@@ -1,21 +1,21 @@
-#encoding=utf-8
+# encoding=utf-8
 baidu_ocr = {
-    'app_id':'',#这里写app_id
-    'app_key':'*************',
-    'app_secret':'********'
-    }
-hanvon_ocr = {
-    
-    }
-path="E:/neon_workspace/auto_recommend/"
+    'app_id': '*****',  # 这里写app_id
+    'app_key': '*******',
+    'app_secret': 'js72wMVICk6sNW1LDubxsoGpVF7yoLa6'
+}
+
+path = "C:/Users/pzima/PycharmProjects/auto_recommend/img/"
 ref_url = [
     'http://www.baidu.com/s?wd=',
     'http://zhidao.baidu.com/search?word=',
-    ]
-ocr_prefer = ('baidu','space','hanvon','tesseract')
+]
+
+# 配置OCR优先级
+ocr_prefer = ('baidu')
 search_keyword_num = 8
-screen_shot_position = (38,173)
-screen_shot_size = (505,370)
+screen_shot_position = (38, 173)
+screen_shot_size = (505, 370)
 FALSE = (
     "不是",
     "是错",
@@ -25,34 +25,34 @@ FALSE = (
     "不对的是",
 )
 word_escape = {
-    "我国":"中国",
-    "哪国":"国家 国籍",
-    }
+    "我国": "中国",
+    "哪国": "国家 国籍",
+}
 
 params_key = {
-    'baidu':'wd',
-    'baike':'word'
-    }
+    'baidu': 'wd',
+    'baike': 'word'
+}
 jieba_md = 3
 filter_ls = [
-    ("“", "\""), 
-    ("”", "\""), 
+    ("“", "\""),
+    ("”", "\""),
     ("？", " "),
-    ("下列"," "),
-    ("。"," "),
-    ("?"," "),
-    ("的是"," "),
-    ("闻名于"," "),
-    (":"," "),
-    (","," "),
-    ("所说的"," "),
-    ("这个"," "),
-    ("一下"," "),
-    ("在哪儿"," "),
-    ("是什么"," "),
-    ("关于"," "),
-    ("．"," ")
-    ]
+    ("下列", " "),
+    ("。", " "),
+    ("?", " "),
+    ("的是", " "),
+    ("闻名于", " "),
+    (":", " "),
+    (",", " "),
+    ("所说的", " "),
+    ("这个", " "),
+    ("一下", " "),
+    ("在哪儿", " "),
+    ("是什么", " "),
+    ("关于", " "),
+    ("．", " ")
+]
 jieba_filter_ls = [
     "\"",
     "'"
@@ -94,4 +94,4 @@ jieba_filter_ls = [
     "所说的",
     "在哪儿",
     "是什么",
-    ]
+]

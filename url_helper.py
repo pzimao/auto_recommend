@@ -1,40 +1,8 @@
-#encoding=utf-8
-from PIL import Image
-import colorsys
-import os,base64,json
-import pytesseract
-import time
-import re
-import urllib,urllib2
+# encoding=utf-8
 import config
-import threading
-import win32gui, win32ui, win32con
-# import win32api
-from selenium import webdriver
-# import traceback
-from selenium.webdriver.support.wait import WebDriverWait
-# import urllib, urllib2
-# import StringIO 
-from aip import AipOcr
-import operator
-import jieba
-import random
-import requests
-import thread
-import jieba_helper
-import ocr_helper
-import question_helper
-import recommend_helper
-import screen_shot_helper
-import selenium_helper
-import url_helper
-from lxml import html
-import chardet
-import sys
-reload(sys) 
-sys.setdefaultencoding('utf8')
-
-
+import urllib.request
+import urllib.parse
+import traceback
 
 Agents = (
     "Mozilla/5.0 (Linux; U; Android 2.3.6; en-us; Nexus S Build/GRK39F) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1",
@@ -99,20 +67,21 @@ Agents = (
     "Mozilla/5.0 (Linux; U; Android 3.0; en-us; Xoom Build/HRI39) AppleWebKit/525.10  (KHTML, like Gecko) Version/3.0.4 Mobile Safari/523.12.2",
     "Mozilla/5.0 (Linux; U; Android 1.6; es-es; SonyEricssonX10i Build/R1FA016) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1",
     "Mozilla/5.0 (Linux; U; Android 1.6; en-us; SonyEricssonX10i Build/R1AA056) AppleWebKit/528.5  (KHTML, like Gecko) Version/3.1.2 Mobile Safari/525.20.1",
-
-
 )
 
-def get_result_content(keyword,ref=0):
-#     print keyword
+
+def get_result_content(keyword, ref=0):
     try:
-        if ref==0:
-            request = urllib2.Request(config.ref_url[ref]+urllib.quote(keyword.decode(sys.stdin.encoding).encode('gbk')))
-            response = urllib2.urlopen(request)
-            return response.read()
-        else:  
-            request = urllib2.Request(config.ref_url[ref]+urllib.quote(keyword.decode(sys.stdin.encoding).encode('gbk')))
-            response = urllib2.urlopen(request)
-            return response.read().decode('gbk').encode()
+        request = urllib.request.Request(config.ref_url[ref] + urllib.request.quote(keyword))
+
+        request.add_header("user-agent",
+                           "Mozilla/5.0 (Linux; U; Android 2.2; en-us; Sprint APA9292KT Build/FRF91) AppleWebKit/533.1 (KHTML, like Gecko) Version/4.0 Mobile Safari/533.1")
+        request.add_header("HOST",
+                           "www.baidu.com")
+        request.add_header("cookie",
+                           "BAIDUID=A7017431EFDC367DFB45D3AB9718650E:FG=1; BIDUPSID=A7017431EFDC367DFB45D3AB9718650E; PSTM=1568443861; BD_UPN=12314753; MCITY=-75%3A; __cfduid=da2cfe108a9972f83967b36e65f2d95591575018510; yjs_js_security_passport=bea27660c95b9226fb43daa417ccb50a671a2a27_1576633697_js; BDUSS=ZWMXEtRW9uZVJ1Q0hUY1F3Sm1lRW5kdkRxcUFqSXg3bllabThwTzRlRkVSeUZlRUFBQUFBJCQAAAAAAAAAAAEAAADoKhiKyt61xE1lbW9yeQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAES6-V1EuvldRj; delPer=0; BD_CK_SAM=1; PSINO=1; ZD_ENTRY=baidu; BD_HOME=1; BDRCVFR[feWj1Vr5u3D]=I67x6TjHwwYf0; COOKIE_SESSION=13941_0_9_0_8_24_1_3_9_6_1_6_0_0_15_0_1575257028_0_1576661115%7C9%230_0_1576661115%7C1; H_PS_PSSID=1466_21101_30211_18560_30284_26350; sug=3; sugstore=0; ORIGIN=0; bdime=0; H_PS_645EC=3ec2pYPJ4RASm6xFH3rYwmiocwEx%2B8Ut37eOntpbY0oECx3dInvBvfR0TL4")
+        response = urllib.request.urlopen(request)
+        return str(response.read(), encoding="utf8")
     except:
-        print 'url 读取异常'
+        print('url 读取异常')
+        traceback.print_exc()
