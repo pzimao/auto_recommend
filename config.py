@@ -1,8 +1,8 @@
 #encoding=utf-8
 baidu_ocr = {
     'app_id':'',#这里写app_id
-    'app_key':'KbitiVi5pyGBebM0Ujcm3zRl',
-    'app_secret':'js72wMVICk6sNW1LDubxsoGpVF7yoLa6'
+    'app_key':'*************',
+    'app_secret':'********'
     }
 hanvon_ocr = {
     
