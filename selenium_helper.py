@@ -20,6 +20,5 @@ def browser_init(url="https://www.baidu.com"):
     driver = webdriver.Firefox()
     # driver = webdriver.Chrome(executable_path="C:/Program Files (x86)/Google/Chrome/Application/chromedriver.exe")
     # driver = webdriver.Chrome()
-
     driver.get(url)
     return driver

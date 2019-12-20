@@ -1,21 +1,18 @@
 # encoding=utf-8
 baidu_ocr = {
-    'app_id': '*****',  # 这里写app_id
-    'app_key': '*******',
+    'app_id': '10684752',  # 这里写app_id
+    'app_key': 'KbitiVi5pyGBebM0Ujcm3zRl',
     'app_secret': 'js72wMVICk6sNW1LDubxsoGpVF7yoLa6'
 }
 
 path = "C:/Users/pzima/PycharmProjects/auto_recommend/img/"
 ref_url = [
     'http://www.baidu.com/s?wd=',
-    'http://zhidao.baidu.com/search?word=',
 ]
 
-# 配置OCR优先级
-ocr_prefer = ('baidu')
 search_keyword_num = 8
-screen_shot_position = (38, 173)
-screen_shot_size = (505, 370)
+screen_shot_position = (715, 173)
+screen_shot_size = (500, 400)
 FALSE = (
     "不是",
     "是错",

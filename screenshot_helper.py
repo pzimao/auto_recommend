@@ -1,8 +1,8 @@
-# encoding=utf-8
 from PIL import Image
 import colorsys
 import os
 import win32gui, win32ui, win32con
+import config
 
 
 # 截图
@@ -38,9 +38,9 @@ def get_dominant_color(image):
         #         
         saturation = colorsys.rgb_to_hsv(r / 255.0, g / 255.0, b / 255.0)[1]
 
-        y = min(abs(r * 2104 + g * 4130 + b * 802 + 4096 + 131072) >> 13, 235)
-
-        y = (y - 16.0) / (235 - 16)
+        # y = min(abs(r * 2104 + g * 4130 + b * 802 + 4096 + 131072) >> 13, 235)
+        #
+        # y = (y - 16.0) / (235 - 16)
 
         # 忽略高亮色
         #         if y > 0.9:
@@ -63,8 +63,10 @@ def isQuestion(imgpath):
     domain_color = get_dominant_color(Image.open(imgpath))
     if domain_color[0] < 210 or domain_color[1] < 210 or domain_color[2] < 210:
         #         print '---主持人废话，不处理',
-        #         print domain_color
         os.remove(imgpath)
         return False
     print('*****题目来了******')
     return True
+
+if __name__ == '__main__':
+    screen_capture("test.png", config.screen_shot_position, config.screen_shot_size)

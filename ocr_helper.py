@@ -13,7 +13,6 @@ def baidu_ocr(img, api_version=5, timeout=6):
     options["language_type"] = "CHN_ENG"
     with open(img, "rb") as fp:
         fp = fp.read()
-        result = ''
         if api_version == 1:
             result = client.basicAccurate(fp, options)
         else:
@@ -30,13 +29,6 @@ def baidu_ocr(img, api_version=5, timeout=6):
             return ''
 
 def get_question(img_name):
-    # 调用各种ocr，提取图片中的文字
-    for i in config.ocr_prefer:
-        question = ''
-        if 'baidu' == i:
-            question = baidu_ocr(img_name)
+    # 调用【百度】ocr，提取图片中的文字
+    return baidu_ocr(img_name)
 
-        if question != '':
-            print("文字识别采用: " + i)
-            return question
-    return ''

@@ -3,7 +3,8 @@ import re
 import config
 import jieba_helper
 
-
+# 识别问题的类型；
+# ***是***的 或者***不是***的
 def parse_false(question):
     for item in config.FALSE:
         if item in question:
@@ -11,7 +12,7 @@ def parse_false(question):
             return question, False
     return question, True
 
-
+# 返回格式：问题类型，问题，选项
 def parse_question_and_answer(question):
     q = re.findall(re.compile(r'^(\d+\.?)'), question)
     real_question = question
@@ -19,7 +20,6 @@ def parse_question_and_answer(question):
         real_question = question[len(q[0]):]
 
     ans_ls = []
-    #     print real_question
     line_ls = real_question.split('||')
     if len(line_ls) > 3:
         ans_a = line_ls[-4].strip()
@@ -36,19 +36,16 @@ def parse_question_and_answer(question):
         ans_ls = ["", "", ""]
     real_question = "".join(line_ls[0:-4])
     real_question, flag = parse_false(real_question)
-    print('原问题:'),
-    print(real_question)
+
     real_question = jieba_helper.jieba_parse(real_question)
     for i in config.word_escape:
         if i in real_question:
             real_question = real_question + " " + config.word_escape[i]
+    print("题目主要内容: " + real_question + " " + str(ans_ls))
     return flag, real_question, ans_ls
 
 
 def process_question(question):
-    # 对问题进行处理
     if question.count("\"") % 2 == 1:
-        #         #需要去掉一个"
         question = question.replace("\"", "")
-    #     question = "".join([e.strip("\r\n") for e in question if e])
     return question
